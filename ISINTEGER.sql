@@ -1,3 +1,10 @@
+/*
+	Scalar function for detecting if a value is a valid integer.
+
+	Example use:
+		SELECT dbo.ISINTEGER('0.5') As StringFail, dbo.ISINTEGER('1') As StringPass, dbo.ISINTEGER(2) As NumericPass
+		
+*/
 CREATE OR ALTER FUNCTION ISINTEGER
 (
 	@value sql_variant  

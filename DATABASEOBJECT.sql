@@ -1,3 +1,9 @@
+/*
+	Table function for obtaining a resultset of database objects, from a string list.
+
+	Example use:
+		SELECT * FROM DATABASE_OBJECT('"addressdata", dbo.customer') WHERE type = 'U';
+*/
 SET NOCOUNT ON;
 GO
 CREATE OR ALTER FUNCTION DATABASE_OBJECT( @EntityList NVARCHAR(MAX) )
@@ -70,5 +76,3 @@ BEGIN
 END;
 
 GO
-
-SELECT * FROM DATABASE_OBJECT('"addressdata", dbo.customer') WHERE type = 'U';
