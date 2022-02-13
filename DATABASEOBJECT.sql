@@ -2,7 +2,7 @@ SET NOCOUNT ON;
 GO
 CREATE OR ALTER FUNCTION DATABASE_OBJECT( @EntityList NVARCHAR(MAX) )
     RETURNS @result TABLE (
-		scheme_name sysname,
+		schema_name sysname,
 		object_name sysname,
 		object_ref nvarchar(260),
 		object_id int,
@@ -50,10 +50,10 @@ BEGIN
 	INSERT INTO @NameList(EntityName) VALUES (@EntityList);
 
 	INSERT INTO @result (
-		scheme_name, object_name, object_ref, object_id, type, type_desc
+		schema_name, object_name, object_ref, object_id, type, type_desc
 	)
 	SELECT DISTINCT
-		OBJECT_SCHEMA_NAME(o.object_id) AS scheme_name,
+		OBJECT_SCHEMA_NAME(o.object_id) AS schema_name,
 		ISNULL(o.name, NL.EntityName) AS object_name,
 		QUOTENAME(OBJECT_SCHEMA_NAME(o.object_id))+'.'+QUOTENAME(o.name),
 		o.object_id,
@@ -64,7 +64,7 @@ BEGIN
 		JOIN sys.all_objects AS o
 			ON o.object_id = OBJECT_ID(NL.EntityName)
 	ORDER BY
-		scheme_name, object_name;
+		schema_name, object_name;
 
 	RETURN;
 END;
