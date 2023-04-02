@@ -1,6 +1,8 @@
 # Useful-SQL-Scripts
 This repositry contains useful T-SQL scripts, detailed below.
 
+They may have been written as objects, but probably better to copy-paste the souce of many as inline code for most uses.
+
 ## Scalar Functions
 
 ### ISINTEGER
